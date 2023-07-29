@@ -2,7 +2,8 @@
 #define MAIN_H
 
 #include <stdio.h>
-#include "unistd.h"
+#include <unistd.h>
+#include <stdlib.h>
 
 
 unsigned long int _power(unsigned int base, unsigned int pow);

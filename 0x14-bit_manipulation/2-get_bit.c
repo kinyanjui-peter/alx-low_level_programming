@@ -1,56 +1,52 @@
 #include "main.h"
 
 /**
- * _power - calculate the power of a number
- * @base: base of the exponent
- * @pow: power of the exponent
- * Return: value of base raised to the power of pow
+ * _memset_custom - fills memory with a constant byte
+ *
+ * @memory: input pointer that represents memory
+ *          block to fill
+ * @value: character to fill the memory with
+ * @bytes: number of bytes to be filled
+ *
+ `* Return: A pointer to the filled memory area
  */
-unsigned long int _power(unsigned int base, unsigned int pow)
-{
-    unsigned long int result;
-    unsigned int i;
 
-    result = 1;
-    for (i = 1; i <= pow; i++)
-        result *= base;
-    return (result);
+char *_memset_custom(char *memory, char value, unsigned int bytes)
+{
+unsigned int i;
+
+for (i = 0; i < bytes; i++)
+	memory[i] = value;
+
+return (memory);
 }
 
 /**
- * print_binary - prints the binary representation of a number
- * @n: number to be printed in binary
- * Return: void
+ * _calloc_custom - a function that allocates
+ *                 memory for an array using malloc
+ *
+ *                 It is basically the equivalent to
+ *                 malloc followed by memset_custom
+ *
+ * @num_elements: number of elements in the array
+ * @element_size: size of each element
+ *
+ * Return: pointer with newly allocated memory
+ *         or NULL if it fails
  */
-void print_binary(unsigned long int n)
+
+void *_calloc_custom(unsigned int num_elements, unsigned int element_size)
 {
-    unsigned long int divisor, bit;
+char *ptr;
 
-    /* Set a flag to check if we have encountered a set bit */
-    char flag = 0;
+if (num_elements == 0 || element_size == 0)
+return (NULL);
 
-    /* Calculate the divisor using _power to find the MSB of the number */
-    divisor = _power(2, sizeof(unsigned long int) * 8 - 1);
+ptr = malloc(num_elements * element_size);
+if (ptr == NULL)
+	return (NULL);
 
-    while (divisor != 0)
-    {
-        /* Check if the current bit is set (1) or not (0) */
-        bit = n & divisor;
+_memset_custom(ptr, 0, num_elements * element_size);
 
-        /* If the bit is set, set the flag and print '1' */
-        if (bit == divisor)
-        {
-            flag = 1;
-            _putchar('1');
-        }
-        /* If the bit is not set and the flag is set, print '0' */
-        else if (flag == 1 || divisor == 1)
-        {
-            _putchar('0');
-        }
-
-        /* Move to the next bit */
-        divisor >>= 1;
-    }
+return (ptr);
 }
-
