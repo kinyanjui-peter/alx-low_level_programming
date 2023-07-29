@@ -38,7 +38,7 @@ while (divisor != 0)
 bit = n & divisor;
 
 /* If the bit is set, set the flag and print '1' */
-if(bit == divisor)
+if (bit == divisor)
 {
 	flag = 1;
 	_putchar('1');
