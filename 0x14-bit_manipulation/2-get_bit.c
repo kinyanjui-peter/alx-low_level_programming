@@ -1,52 +1,31 @@
 #include "main.h"
 
 /**
- * _memset_custom - fills memory with a constant byte
+ * get_bit - returns the value of a bit at a given index.
+ * @num: the number whose bits we are checking
+ * @bit_index: the index of the bit to check (0-based)
  *
- * @memory: input pointer that represents memory
- *          block to fill
- * @value: character to fill the memory with
- * @bytes: number of bytes to be filled
- *
- `* Return: A pointer to the filled memory area
+ * Return: the value of the bit at the specified index (0 or 1),
+ *         or -1 if the index is out of range.
  */
-
-char *_memset_custom(char *memory, char value, unsigned int bytes)
+int get_bit(unsigned long int num, unsigned int bit_index)
 {
-unsigned int i;
+    unsigned long int bitmask, bit_value;
 
-for (i = 0; i < bytes; i++)
-	memory[i] = value;
+    // Check if the bit_index is within the valid range for the number
+    if (bit_index > (sizeof(unsigned long int) * 8 - 1))
+        return (-1);
 
-return (memory);
+    // Create a bitmask with only the bit at bit_index set to 1
+    bitmask = 1 << bit_index;
+
+    // Use bitwise AND to check if the bit at bit_index is set to 1
+    bit_value = num & bitmask;
+
+    // If the bit is set, return 1; otherwise, return 0
+    if (bit_value == bitmask)
+        return (1);
+    else
+        return (0);
 }
 
-/**
- * _calloc_custom - a function that allocates
- *                 memory for an array using malloc
- *
- *                 It is basically the equivalent to
- *                 malloc followed by memset_custom
- *
- * @num_elements: number of elements in the array
- * @element_size: size of each element
- *
- * Return: pointer with newly allocated memory
- *         or NULL if it fails
- */
-
-void *_calloc_custom(unsigned int num_elements, unsigned int element_size)
-{
-char *ptr;
-
-if (num_elements == 0 || element_size == 0)
-return (NULL);
-
-ptr = malloc(num_elements * element_size);
-if (ptr == NULL)
-	return (NULL);
-
-_memset_custom(ptr, 0, num_elements * element_size);
-
-return (ptr);
-}
