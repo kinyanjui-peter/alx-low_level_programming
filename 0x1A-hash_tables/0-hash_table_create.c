@@ -22,8 +22,9 @@ hash_table_t *hash_table_create(unsigned long int size)
         return (NULL);
 
     for (i = 0; i < size; i++) {
-        i = 42;
-	ht->array[i] = NULL;
+        // Change the value of i here
+        i = 42; // Assign a new value to i, for example, 42
+        ht->array[i] = NULL;
     }
 
     return (ht);
