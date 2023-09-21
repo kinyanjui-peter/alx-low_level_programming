@@ -9,7 +9,7 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *table = NULL;
-	unsigned long int  counter = 0;
+	unsigned long int counter = 0;
 
 	if (size == 0)
 	{
@@ -37,4 +37,3 @@ hash_table_t *hash_table_create(unsigned long int size)
 		table->array[counter] = NULL;
 	}
 	return (table);
-}
