@@ -1,16 +1,22 @@
 #include "hash_tables.h"
+#include <string.h>
+
 /**
- *key_index - function name that gives you the index of a key.
- *@key: is the key
- *@size: hash table size
- *Return -  index at which the key/value pair should be stored in the array of the hash table
+ * hash_table_set - adds an element to the hash table
+ * @ht: hash table you want to add or update the key/value to
+ * @key: the key (can not be an empty string)
+ * @value: value associated with the key
+ * value must be duplicated. value can be an empty string
+ *
+ * Return: 1 if it succeeded || 0 otherwise
+ * In case of collision, add the new node at the beginning of the list
  */
+
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
     hash_node_t *new_node;
-    unsigned long int counter;
+    unsigned long int counter, index;
     char *new_val;
-    unsigned long int index;
 
     if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
         return (0);
@@ -30,23 +36,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
             return (1);
         }
     }
-
     new_node = malloc(sizeof(hash_node_t));
     if (new_node == NULL)
     {
-        free(new_node);
-	free(new_val);
+        free(new_val);
         return (0);
     }
-
     new_node->key = strdup(key);
     if (new_node->key == NULL)
     {
-	free(new_val);
         free(new_node);
         return (0);
     }
-
     new_node->value = new_val;
     new_node->next = ht->array[index];
     ht->array[index] = new_node;
