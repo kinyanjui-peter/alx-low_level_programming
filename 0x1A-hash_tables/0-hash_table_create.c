@@ -9,7 +9,7 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *table = NULL;
-	unsigned long int counter = 0;
+	/*unsigned long int counter = 0;*/
 
 	if (size == 0)
 	{
@@ -23,7 +23,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 		}/*memory allocation failed*/
 
 	/*allocate space for the hash nodes*/
-	table->array = (hash_node_t **)malloc(sizeof(hash_node_t *) * size);
+	table->array = calloc((size_t)size, sizeof(hash_node_t *));
 	if (table->array == NULL)
 	{
 		free(table);
@@ -32,8 +32,5 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	/*initialize size and pointers*/
 	table->size = size;
-	for (counter = 0; counter <= size; counter++)
-	{
-		table->array[counter] = NULL;
-	}
 	return (table);
+}
