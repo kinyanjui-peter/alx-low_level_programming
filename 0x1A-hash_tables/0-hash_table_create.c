@@ -20,7 +20,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 		if (table == NULL)
 		{
 			return (NULL);
-		}/*memory allocation failed*/
+		} /*memory allocation failed*/
 
 	/*allocate space for the hash nodes*/
 	table->array = calloc((size_t)size, sizeof(hash_node_t *));
