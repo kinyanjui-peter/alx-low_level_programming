@@ -1,14 +1,13 @@
 
 CC = gcc
 SRC = school.c main.c m.h
-OBJ = *.o
+OBJ = $(SRC:.o=.O)
 NAME = school
 
-all: school
+.PHONY: ALL
+all: $(NAME)
 
 
-NAME: $(SRC) $(OBJ)
-	$(CC) -o school $(SRC)
-	$(CC) -o school $(OBJ)
-
-
+NAME: $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+	
