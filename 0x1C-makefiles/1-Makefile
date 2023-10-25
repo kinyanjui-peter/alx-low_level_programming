@@ -1,0 +1,7 @@
+all: school
+
+CC = 'gcc'
+SRC = '*.c
+
+school: $(SRC)
+	$(CC) -o school $(SRC)
