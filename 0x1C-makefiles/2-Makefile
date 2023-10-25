@@ -4,7 +4,8 @@ SRC = school.c main.c m.h
 OBJ = $(SRC:.o=.O)
 NAME = school
 
-.PHONY: ALL
+.PHONY: all
+
 all: $(NAME)
 
 
