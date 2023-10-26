@@ -2,7 +2,7 @@
 CC = gcc
 SRC = school.c main.c
 
-OBJ = $(SRC:.o=.o)
+OBJ = $(SRC:.c=.o)
 
 NAME = school
 
