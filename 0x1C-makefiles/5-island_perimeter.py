@@ -14,6 +14,7 @@ agrs: grid
 
 
 def island_perimeter(grid):
+    """if not is null return 0`"""
     if not grid:
         return 0
 
