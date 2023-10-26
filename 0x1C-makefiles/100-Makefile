@@ -1,0 +1,23 @@
+NAME = school
+SRC = school.c main.c
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+
+clean:
+	[ -f $(NAME) ] && $(RM) $(NAME) || true
+
+oclean:
+	$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
+
+$(OBJ): %.o: %.c m.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+.PHONY: all clean fclean oclean re
