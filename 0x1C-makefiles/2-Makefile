@@ -8,5 +8,5 @@ NAME = school
 
 all: $(NAME)
 
-NAME: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(OBJ)-o $(NAME)	
