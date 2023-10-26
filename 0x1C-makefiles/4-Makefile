@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 RM = rm -f
 NAME = school
-SRC = $(wildcard *.c)
+SRC = main.c school.c m.h
 OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean oclean re
