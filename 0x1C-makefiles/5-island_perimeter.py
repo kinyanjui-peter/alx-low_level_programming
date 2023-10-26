@@ -5,10 +5,14 @@
 One cell is a square with side length 1
 Grid cells are connected horizontally/vertically (not diagonally).
 Grid is rectangular, width and height don’t exceed 100
-Grid is completely surrounded by water, and there is one island (or nothing).
-The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island).
+Grid is completely surrounded by water, and there is one island
+(or nothing).
+The island doesn’t have “lakes” (water inside that isn’t connected to
+the water around the island).
 agrs: grid
     """
+
+
 def island_perimeter(grid):
     if not grid:
         return 0
@@ -25,5 +29,3 @@ def island_perimeter(grid):
                 if j > 0 and grid[i][j - 1] == 1:
                     perimeter -= 2
     return perimeter
-
-
